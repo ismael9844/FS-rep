@@ -1,61 +1,252 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# FoodShare - Food Donation Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A platform that connects donors with receivers, organizations, and volunteers to fight food waste and support those in need. Built with Laravel, Vue.js, and Inertia.js.
 
-## About Laravel
+## Overview
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+FoodShare provides a comprehensive solution for managing food donations, connecting communities, and reducing food waste. The platform enables individuals and organizations to post available food donations, browse nearby offerings, and coordinate pickups through an intuitive interface with real-time notifications and interactive mapping.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Core Functionality
+- Food donation management system with create, browse, and claim capabilities
+- Interactive map view using Leaflet with geolocation support
+- Real-time email notifications for donation requests and status updates
+- Multi-role user system supporting donors, receivers, organizations, partners, and volunteers
+- Privacy controls including anonymous donation options
 
-## Learning Laravel
+### Places System
+- Community location sharing for food pickup points
+- Interactive map with click-to-select functionality
+- Reverse geocoding for automatic address lookup
+- Multiple photo uploads using ImgBB CDN
+- Automated email notifications with Google Maps and Calendar integration
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Analytics and Reporting
+- Complete donation history tracking
+- Impact metrics including total donations, meals served, and urgent pickups
+- Monthly trend visualization
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Organization Features
+- Partner and organization management
+- Food request creation and management
+- Contribution and funding tracking
+- Support for multiple organizational roles
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Technical Stack
 
-## Laravel Sponsors
+### Backend
+- Laravel 11 as the core framework
+- MySQL for data persistence
+- Laravel Sanctum for API authentication
+- Laravel Breeze for authentication scaffolding
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Frontend
+- Vue.js 3 for reactive user interfaces
+- Inertia.js for seamless SPA experience
+- Tailwind CSS for styling
+- Chart.js for data visualization
+- Leaflet for interactive maps
 
-### Premium Partners
+### External Services
+- ImgBB API for image hosting and CDN
+- OpenStreetMap for map tiles
+- Nominatim for geocoding services
+- SMTP for email delivery
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Requirements
+
+- PHP 8.2 or higher
+- Composer 2.0 or higher
+- Node.js 18.x or higher
+- NPM 9.x or higher
+- MySQL 8.0 or higher
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/foodshare.git
+cd foodshare
+```
+
+Install PHP dependencies:
+
+```bash
+composer install
+```
+
+Install JavaScript dependencies:
+
+```bash
+npm install
+```
+
+Create and configure your environment file:
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Configure your database and external services in the `.env` file:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=foodshare
+DB_USERNAME=root
+DB_PASSWORD=
+
+IMGBB_API_KEY=your_imgbb_api_key
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_username
+MAIL_PASSWORD=your_password
+MAIL_FROM_ADDRESS="noreply@foodshare.com"
+```
+
+Run database migrations:
+
+```bash
+php artisan migrate
+```
+
+Create the storage symlink:
+
+```bash
+php artisan storage:link
+```
+
+Build frontend assets:
+
+```bash
+npm run dev
+```
+
+Start the development server:
+
+```bash
+php artisan serve
+```
+
+The application will be available at http://localhost:8000
+
+## Project Structure
+
+```
+foodshare/
+├── app/
+│   ├── Http/Controllers/
+│   ├── Models/
+│   └── Mail/
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── public/
+│   └── build/
+├── resources/
+│   ├── js/
+│   │   ├── Components/
+│   │   └── Pages/
+│   └── views/
+├── routes/
+│   ├── web.php
+│   └── auth.php
+└── README.md
+```
+
+## Configuration
+
+### ImgBB Setup
+
+Register for an API key at https://imgbb.com and add it to your `.env` file:
+
+```env
+IMGBB_API_KEY=your_api_key_here
+```
+
+### Email Configuration
+
+For development, use Mailtrap:
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_username
+MAIL_PASSWORD=your_password
+```
+
+For production with Gmail:
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_app_password
+MAIL_ENCRYPTION=tls
+```
+
+## Deployment
+
+### Production Build
+
+```bash
+composer install --optimize-autoloader --no-dev
+npm install
+npm run build
+```
+
+### Laravel Optimization
+
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+### cPanel Deployment Notes
+
+1. Upload all files to `/public_html/`
+2. Configure production environment variables in `.env`
+3. Set appropriate permissions for storage and cache directories:
+   ```bash
+   chmod -R 775 storage
+   chmod -R 775 bootstrap/cache
+   ```
+4. Run migrations: `php artisan migrate --force`
+5. Create storage symlink: `php artisan storage:link`
+6. Clear and optimize caches
+
+Important: Set your document root to `/public_html/public/` in your hosting control panel.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Contributions are welcome. Please follow these guidelines:
 
-## Code of Conduct
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes with clear commit messages
+4. Ensure tests pass
+5. Submit a pull request
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Please follow PSR-12 coding standards for PHP and use ESLint for JavaScript.
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Author
 
-## License
+Ismael Abba Diakite
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Contact
+
+For questions or support, please email isadiak98us@gmail.com or open an issue on GitHub.
+
+## Acknowledgments
+
+Built with Laravel, Vue.js, Inertia.js, and Tailwind CSS. Map data provided by OpenStreetMap contributors. Image hosting by ImgBB.
