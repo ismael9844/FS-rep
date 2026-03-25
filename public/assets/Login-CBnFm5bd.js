@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{b as t,d as s,f as n}from"./app-BaAQ9G0I.js";const r={},c={class:"p-4"};function a(f,o){return s(),t("div",c,o[0]||(o[0]=[n("h2",{class:"text-xl font-bold"},"Login",-1)]))}const i=e(r,[["render",a]]);export{i as default};
